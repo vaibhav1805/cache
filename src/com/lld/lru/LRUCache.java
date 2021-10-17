@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LRUCache<K,V> implements Cache<K,V> {
-    private int size;
+    private final int size;
     private final Map<K, CacheElement<K, V>> llNodeMap;
     private final DoublyLinkedList<CacheElement<K,V>> dll;
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
@@ -38,7 +38,7 @@ public class LRUCache<K,V> implements Cache<K,V> {
             }
             llNodeMap.put(key, newElement);
         }catch (Exception e){
-            System.out.printf("Cache updated failed, error: {}%n", e.getMessage());
+            System.out.printf("Cache update failed, error: {}%n", e.getMessage());
             return false;
         }finally {
             this.lock.writeLock().unlock();

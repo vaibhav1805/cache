@@ -27,11 +27,19 @@ public class DoublyLinkedList<T> {
         return n;
     }
 
+    public void remove(T n){
+        this.dll.remove(n);
+    }
+
     public T head(){
         return this.dll.getFirst();
     }
 
     public T last(){
         return this.dll.getLast();
+    }
+
+    public boolean isEmpty(){
+        return this.dll.isEmpty();
     }
 }
